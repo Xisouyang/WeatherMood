@@ -26,6 +26,7 @@ class OpenWeatherQuery {
     
     static func createCityWeatherParams(city: String, country: String) -> [URLQueryItem] {
         return [URLQueryItem(name: "q", value: "\(city),\(country)"),
+                URLQueryItem(name: "units", value: "imperial"),
                 URLQueryItem(name: "appid", value: Constants.api)]
     }
     

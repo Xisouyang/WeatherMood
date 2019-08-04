@@ -12,6 +12,7 @@ class MoodViewController: UIViewController {
     
     static var city: String = ""
     static var country: String = ""
+    var dataArr: [WeatherModel] = []
     
     var errorMsg = UILabel()
 
@@ -26,6 +27,8 @@ class MoodViewController: UIViewController {
             switch result {
             case .success(let result):
                 print("success")
+                print(result)
+                self.dataArr.append(result)
                 
             case .failure( let error):
                 print("fail")
@@ -35,8 +38,6 @@ class MoodViewController: UIViewController {
                 }
             }
         }
-
-        // Do any additional setup after loading the view.
     }
 }
 
@@ -49,9 +50,6 @@ extension MoodViewController {
         view.addSubview(errorMsg)
         errorMsgConstraints()
     }
-}
-
-extension MoodViewController {
     
     func errorMsgConstraints() {
         
@@ -61,4 +59,8 @@ extension MoodViewController {
         errorMsg.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         errorMsg.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
     }
+}
+
+extension MoodViewController {
+    
 }
