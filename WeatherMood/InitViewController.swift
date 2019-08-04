@@ -74,7 +74,7 @@ extension InitViewController {
         MoodViewController.country = countryField.text!
         
         let next = MoodViewController()
-        self.present(next, animated: true, completion: nil)
+        self.navigationController?.pushViewController(next, animated: true)
     }
 }
 

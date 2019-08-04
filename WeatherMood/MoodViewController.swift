@@ -12,8 +12,8 @@ class MoodViewController: UIViewController {
     
     static var city: String = ""
     static var country: String = ""
-   
-    var jsonArr: [WeatherModel] = []
+    
+    var errorMsg = UILabel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,28 +26,39 @@ class MoodViewController: UIViewController {
             switch result {
             case .success(let result):
                 print("success")
-                self.jsonArr.append(result)
-                print(self.jsonArr)
                 
             case .failure( let error):
                 print("fail")
                 print(error)
+                DispatchQueue.main.async {
+                    self.createErrorMsg()
+                }
             }
         }
-        
 
         // Do any additional setup after loading the view.
     }
+}
+
+extension MoodViewController {
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func createErrorMsg() {
+        errorMsg.text = "Error! Please enter valid location!"
+        errorMsg.textAlignment = .center
+        errorMsg.font = UIFont.systemFont(ofSize: 20)
+        view.addSubview(errorMsg)
+        errorMsgConstraints()
     }
-    */
+}
 
+extension MoodViewController {
+    
+    func errorMsgConstraints() {
+        
+        errorMsg.translatesAutoresizingMaskIntoConstraints = false
+        errorMsg.heightAnchor.constraint(equalToConstant: 60).isActive = true
+        errorMsg.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.8).isActive = true
+        errorMsg.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        errorMsg.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+    }
 }

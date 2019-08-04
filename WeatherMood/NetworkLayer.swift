@@ -53,9 +53,7 @@ class NetworkLayer {
             completion(.failure(.badURL))
             return
         }
-        
-        print("url: \(url)")
-        
+                
         //create request
         var urlRequest = URLRequest(url: url)
         //specify request method
