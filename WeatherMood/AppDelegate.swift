@@ -6,6 +6,10 @@
 //  Copyright © 2019 Stephen Ouyang. All rights reserved.
 //
 
+//TODO: need to figure out why api key is not working - works
+//      need to get user location - pass into query item
+//      extract temperature from json data
+
 import UIKit
 
 @UIApplicationMain
@@ -16,6 +20,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+        let vc = InitViewController(nibName: nil, bundle: nil)
+        window?.rootViewController = vc
+        window?.makeKeyAndVisible()
+        
         return true
     }
 
